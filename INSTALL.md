@@ -5,7 +5,7 @@ has step-by-step instructions that install detectron2.
 The [Dockerfile](https://github.com/facebookresearch/detectron2/blob/master/docker/Dockerfile)
 also installs detectron2 with a few simple commands.
 
-### Requirements
+### Requirements （需求）
 - Linux or macOS with Python ≥ 3.6
 - PyTorch ≥ 1.3
 - [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
@@ -14,7 +14,9 @@ also installs detectron2 with a few simple commands.
 - pycocotools: `pip install cython; pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'`
 
 
-### Build Detectron2 from Source
+### Build Detectron2 from Source（从源代码构建）
+
+在满足需求条件的基础上并且拥有gcc和g++是5以上版本
 
 After having the above dependencies and gcc & g++ ≥ 5, run:
 ```
@@ -32,6 +34,8 @@ cd detectron2 && python -m pip install -e .
 To __rebuild__ detectron2 that's built from a local clone, use `rm -rf build/ **/*.so` to clean the
 old build first. You often need to rebuild detectron2 after reinstalling PyTorch.
 
+要重新构建从本地克隆构建的detectron2，请先清除旧的构建。重新安装PyTorch之后，您通常需要重建detectron2。rm -rf build/ **/*.so
+
 ### Install Pre-Built Detectron2
 ```
 # for CUDA 10.1:
@@ -39,12 +43,20 @@ python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wh
 ```
 You can replace cu101 with "cu{100,92}" or "cpu".
 
+您可以将cu101替换为“ cu {100,92}”或“ cpu”。
+
 Note that:
 1. Such installation has to be used with the latest official PyTorch release (currently 1.4).
    It will not work with your custom build of PyTorch.
 2. Such installation is out-of-date w.r.t. master branch of detectron2. It may not be
 	 compatible with the master branch of a research project that uses detectron2 (e.g. those in
 	 [projects](./projects) or [meshrcnn](https://github.com/facebookresearch/meshrcnn/)).
+
+
+注意：
+
+这种安装必须与最新的官方PyTorch版本（当前为1.4）一起使用。它不适用于您自定义的PyTorch构建。
+这样的安装是detectron2的wrt master分支过期。它可能与使用detectron2的研究项目的主分支（例如，项目或meshrcnn中的分支）不兼容 。
 
 ### Common Installation Issues
 
